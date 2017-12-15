@@ -30,6 +30,9 @@ library(evolution)
 ```
 
 
+An HTML rendered version of this vignette can be found on this [RPubs page](http://rpubs.com/zcolburn/evolution).
+
+
 # Overview
 
 
