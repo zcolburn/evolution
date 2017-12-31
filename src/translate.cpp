@@ -30,7 +30,7 @@ StringVector translate(
 
   // Check for things that could cause errors
   if(seq_length % 3 != 0){
-    std::cout << "nt_sequence is not a multiple of 3!";
+    Rcpp::Rcout << "nt_sequence is not a multiple of 3!";
     return NA_STRING;
   }
   if(
@@ -44,7 +44,7 @@ StringVector translate(
           ((nt_sequence(seq_length-2)=="G") && (nt_sequence(seq_length-1)=="A")))
       ))
   ){
-    std::cout << "The first and last codons are not start and stop codons!";
+    Rcpp::Rcout << "The first and last codons are not start and stop codons!";
     return NA_STRING;
   }
 
