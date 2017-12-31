@@ -19,7 +19,7 @@ using namespace Rcpp;
 //'
 //' @examples
 //' set.seed(1)
-//' insertion_mutator(
+//' .insertion_mutator(
 //' c("C","A","T","G","A"),
 //' insertion_rate_A = 0.05,
 //' insertion_rate_T = 0.05,
@@ -31,8 +31,8 @@ using namespace Rcpp;
 //'
 //' @useDynLib evolution, .registration = TRUE
 //'
-// [[Rcpp::export]]
-StringVector insertion_mutator(
+// [[Rcpp::export(.insertion_mutator_cpp)]]
+StringVector insertion_mutator_cpp(
     StringVector nt_sequence,
     double insertion_rate_A = 0.05,
     double insertion_rate_T = 0.05,

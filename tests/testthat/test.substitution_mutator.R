@@ -29,11 +29,12 @@ test_that(
 test_that(
   "substitution_mutator returns NA with invalid probability inputs",
   {
-    expect_true(
+    expect_error(
       {
-        value <- substitution_mutator(c("C","A","A"),
-                                      0.05,0.05,-0.1,0.05,0.05,0.05,0.05,0.05)
-        is.na(value)
+        substitution_mutator(
+          c("C","A","A"),
+          0.05,0.05,-0.1,0.05,0.05,0.05,0.05,0.05
+        )
       }
     )
   }

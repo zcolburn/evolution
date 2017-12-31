@@ -4,12 +4,12 @@
 \alias{generate_sequence}
 \title{Generate a DNA sequence.}
 \usage{
-generate_sequence(n = 100, start_codon = TRUE, stop_codon = TRUE,
+generate_sequence(num = 100, start_codon = TRUE, stop_codon = TRUE,
   probabilities = c(0.25, 0.25, 0.25, 0.25),
   allow_internal_stop_codons = FALSE)
 }
 \arguments{
-\item{n}{Number of codons in the sequence.}
+\item{num}{Number of codons in the sequence.}
 
 \item{start_codon}{TRUE/FALSE, whether a start codon should be included.}
 

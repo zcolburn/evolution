@@ -42,6 +42,9 @@ Using the functions included in the evolution package, you can simulate the evol
 # Performing mutations
 
 
+```{r,echo=FALSE,message=FALSE,results='hide',warning=FALSE}
+library(evolution)
+```
 ```{r,message=FALSE}
 # Set a random seed.
 set.seed(10)
@@ -51,7 +54,7 @@ library(dplyr)
 
 # Create a nucleotide sequence.
 nt_seq <- evolution::generate_sequence(
-  n = 100, 
+  num = 100, 
   start_codon = FALSE, stop_codon = FALSE
 )
 
@@ -69,7 +72,7 @@ Next, I perform numerous iterations of mutation and compare the resulting protei
 
 ```{r,results='hide'}
 # Get template protein sequence
-prot_seq <- evolution::translate(nt_seq)
+prot_seq <- evolution::translate(nt_seq, check_start_and_stop = FALSE)
 
 #' iterative_substitution
 #'
@@ -87,7 +90,7 @@ iterative_substitution <- function(
   
   # Create a protein template for comparison to the protein sequence made
   # after substitution mutations.
-  prot_template <- evolution::translate(nt_sequence)
+  prot_template <- evolution::translate(nt_sequence, FALSE)
   
   # Initialize a list to store sequences for each element of the population.
   output <- rep(list(nt_sequence), pop_size)
@@ -134,7 +137,7 @@ iterative_substitution <- function(
     # Translate all codons of these nucleotide sequences into amino acids.
     new_prots <- lapply(
       new_seqs,
-      function(current_seq){evolution::translate(current_seq)}
+      function(current_seq){evolution::translate(current_seq, FALSE)}
     )
     
     # Identify protein sequences that do not match the template.
@@ -180,8 +183,8 @@ iterative_substitution <- function(
 }
 
 # Perform iterative substitution.
-num_iterations <- 100
-pop_size <- 1000
+num_iterations <- 50
+pop_size <- 200
 result <- iterative_substitution(nt_seq, num_iterations, pop_size, 0.002)
 ```
 
@@ -202,11 +205,11 @@ num_snps <- lapply(
 sprintf("Average number of SNPs per sequence: %f", mean(num_snps))
 
 # Check that the protein sequence remains unchanged.
-prot_template <- evolution::translate(nt_seq)
+prot_template <- evolution::translate(nt_seq, FALSE)
 proteins_match <- lapply(
   result,
   function(current_seq){
-    prot_seq <- evolution::translate(current_seq)
+    prot_seq <- evolution::translate(current_seq, FALSE)
     if(all(prot_seq == prot_template)){
       return(TRUE)
     } else {
@@ -265,7 +268,7 @@ sprintf("Average number of SNPs per sequence: %f", mean(mut_num_snps))
 mut_proteins_match <- lapply(
   mut_result,
   function(current_seq){
-    prot_seq <- evolution::translate(current_seq)
+    prot_seq <- evolution::translate(current_seq, FALSE)
     if(all(prot_seq == prot_template)){
       return(TRUE)
     } else {

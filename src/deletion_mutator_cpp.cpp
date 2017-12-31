@@ -1,9 +1,9 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-//' Randomly delete nucleotides in a sequence
+//' @title Randomly delete nucleotides in a sequence
 //'
-//' @details Pass in a vector of nucleotides, the probability of single
+//' @description Pass in a vector of nucleotides, the probability of single
 //' nucleotide deletions for each of the four nucleotides, and return a new
 //' vector of nucleotides.
 //'
@@ -18,10 +18,9 @@ using namespace Rcpp;
 //' @return A vector of nucleotides, i.e. c("C","T","G","A"), with deleted
 //' nucleotides omitted.
 //'
-//'
 //' @examples
 //' set.seed(1)
-//' deletion_mutator(
+//' .deletion_mutator(
 //' c("C","A","T","G","A"),
 //' deletion_rate_A = 0.05,
 //' deletion_rate_T = 0.05,
@@ -29,13 +28,10 @@ using namespace Rcpp;
 //' deletion_rate_G = 0.05
 //' )
 //'
-//' @export
-//'
-//'
 //' @useDynLib evolution, .registration = TRUE
 //'
-// [[Rcpp::export]]
-StringVector deletion_mutator(StringVector nt_sequence,
+// [[Rcpp::export(.deletion_mutator_cpp)]]
+StringVector deletion_mutator_cpp(StringVector nt_sequence,
                       double deletion_rate_A = 0.05,
                       double deletion_rate_T = 0.05,
                       double deletion_rate_C = 0.05,

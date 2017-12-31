@@ -27,16 +27,14 @@ using namespace Rcpp;
 //'
 //' @examples
 //' set.seed(1)
-//' substitution_mutator(
+//' .substitution_mutator(
 //' c("C","A","T","G","A")
 //' )
 //'
-//' @export
-//'
 //' @useDynLib evolution, .registration = TRUE
 //'
-// [[Rcpp::export]]
-StringVector substitution_mutator(StringVector nt_sequence,
+//[[Rcpp::export(.substitution_mutator_cpp)]]
+StringVector substitution_mutator_cpp(StringVector nt_sequence,
                       float sub_rate_A_to_T = 0.05,
                       float sub_rate_A_to_C = 0.05,
                       float sub_rate_A_to_G = 0.05,

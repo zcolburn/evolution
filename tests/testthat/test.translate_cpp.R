@@ -109,9 +109,5 @@ test_that("translate correctly translates codons",{
   },
   equals(c("A","V","P"))
   )
-
-  expect_true(
-    is.na(translate(c("C","G","T"), TRUE))
-  )
 }
 )

@@ -1,7 +1,7 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-//' Translate a DNA sequence into an amino acid sequence.
+//' @title Translate a DNA sequence into an amino acid sequence.
 //'
 //' @param nt_sequence An in-frame vector of nucleotides, i.e. c("A","T","G","T"
 //' ,"A","G"). The first and last codons should be start and stop codons.
@@ -13,18 +13,16 @@ using namespace Rcpp;
 //' @return A vector of amino acids.
 //'
 //' @examples
-//' translate(
+//' .translate(
 //' c("A","T","G","T","A","G")
 //' )
 //'
-//' @export
-//'
 //' @useDynLib evolution, .registration = TRUE
 //'
-// [[Rcpp::export]]
-StringVector translate(
+// [[Rcpp::export(.translate_cpp)]]
+StringVector translate_cpp(
     StringVector nt_sequence,
-    bool check_start_and_stop = false
+    bool check_start_and_stop = true
 ){
   int seq_length = nt_sequence.size();
 

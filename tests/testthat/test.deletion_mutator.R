@@ -30,10 +30,9 @@ test_that(
 test_that(
   "deletion_mutator returns NA with invalid probability inputs",
   {
-    expect_true(
+    expect_error(
       {
-        value <- deletion_mutator(c("C","A","A"),1.2,0.05,0.05,0.05)
-        is.na(value)
+        deletion_mutator(c("C","A","A"),1.2,0.05,0.05,0.05)
       }
     )
   }
