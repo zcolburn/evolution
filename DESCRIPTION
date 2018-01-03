@@ -1,7 +1,7 @@
 Package: evolution
 Type: Package
 Title: Genetic Algorithm For Protein Engineering
-Version: 0.2.0
+Version: 0.2.1
 Author: Zachary Colburn
 Maintainer: Zachary Colburn <zcolburn@gmail.com>
 Description: Methods for modeling the evolution of DNA sequences.
